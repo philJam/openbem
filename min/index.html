@@ -88,11 +88,11 @@
  
 
  
-<table class="table" style="width:70%; float:left;">
+<table class="table" style="width:60%; float:left;">
     <colgroup>
-    <col style="width:35%">
+    <col style="width:40%">
     <col style="width:10%">
-    <col style="width:10%">
+    <col style="width:5%">
     <col style="width:35%">
     <col style="width:10%">
     </colgroup> 
@@ -252,7 +252,7 @@
     
 </table>
 
-<div style="width:25%; background-color:#eee;  padding:10px; margin-left:10px; float:left;">
+<div style="width:30%; background-color:#eee;  padding:10px; margin-left:10px; float:left;">
 <b>2) Then explore energy bill and carbon savings from retrofit options.</b><br><br>
 <table class="table">
     <colgroup>
@@ -321,6 +321,19 @@
         <td></td>
         <td></td>
         <td></td>
+    </tr>
+    
+    <tr>
+        <td>...</td>
+    </tr>
+    
+    <tr>
+        <td>Current bill </td><td>After retrofit</td><td>Saving</td>
+    </tr>
+    <tr>
+        <td>£<span key="data.total_cost" dp=0></span></td>
+        <td>£<span key="data.simple.retrofit.total_cost" dp=0></span></td>
+        <td>£<span key="data.simple.retrofit.cost_saving" dp=0></span></td>
     </tr>
     
 </table>
@@ -751,6 +764,8 @@
 
         // 5) Copy resultant heat demand from the retrofit data object
         var retrofit_heat_demand = data.space_heating.heat_demand_kwh;
+        var retrofit_cost = data.total_cost;
+        //var retrofit_saving = data.total_cost - 
         
         // 6) Save a copy of the retrofit data object
         var retrofit = JSON.parse(JSON.stringify(data));
@@ -760,6 +775,8 @@
         
         // 8) Place retrofit data in master object so that it can be drawn to the UI
         data.simple.retrofit.heat_demand_kwh = retrofit_heat_demand;
+        data.simple.retrofit.total_cost = retrofit_cost;
+        data.simple.retrofit.cost_saving = data.total_cost - retrofit_cost;
     }
 
   </script>
